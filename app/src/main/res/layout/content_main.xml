@@ -9,14 +9,81 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <com.udacity.LoadingButton
-        android:id="@+id/custom_button"
-        android:layout_width="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="60dp"
-        android:layout_margin="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.udacity.controlUtils.LoadingButton
+            android:id="@+id/download_button"
+            app:baseColor="@color/colorPrimary"
+            app:loadingColor="@color/colorPrimaryDark"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
+        <RadioGroup
+            android:id="@+id/suggested_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/download_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/suggested_view"
+            app:layout_constraintVertical_bias="0.05">
+
+            <RadioButton
+                android:id="@+id/glide_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/button_glide"
+                android:textSize="@dimen/content_text_size" />
+
+            <RadioButton
+                android:id="@+id/udacity_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_udaciy"
+                android:textSize="@dimen/content_text_size"/>
+
+            <RadioButton
+                android:id="@+id/retrofit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retrofit_button"
+                android:textSize="@dimen/content_text_size" />
+            <RadioButton
+                android:id="@+id/other_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/custom_url"
+                android:textSize="@dimen/content_text_size"/>
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/url_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="@string/url_text_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/suggested_view"
+            style="@style/CustomHeadline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/suggestedfiles"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/url_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

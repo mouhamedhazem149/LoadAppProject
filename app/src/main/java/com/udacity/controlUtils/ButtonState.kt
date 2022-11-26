@@ -1,8 +1,7 @@
-package com.udacity
-
+package com.udacity.controlUtils
 
 sealed class ButtonState {
-    object Clicked : ButtonState()
+    object Transition : ButtonState()
     object Loading : ButtonState()
     object Completed : ButtonState()
 }

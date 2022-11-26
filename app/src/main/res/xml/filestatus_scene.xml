@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<MotionScene xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <Transition
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end"
+        app:autoTransition="animateToEnd"
+        app:motionInterpolator="easeIn"
+        app:duration="2000">
+
+        <KeyFrameSet>
+            <KeyAttribute
+            app:framePosition="0"
+            app:motionTarget="@id/status_text"
+            android:scaleY="3.0"
+            android:scaleX="2.0" />
+
+            <KeyAttribute
+                app:framePosition="10"
+                app:motionTarget="@id/status_text"
+                android:scaleY="10.0"
+                android:scaleX="2.0" />
+
+<!--            <KeyAttribute-->
+<!--                app:framePosition="45"-->
+<!--                app:motionTarget="@id/status_text"-->
+<!--                android:rotation="-360" />-->
+
+            <KeyAttribute
+                app:framePosition="90"
+                app:motionTarget="@id/status_text"
+                android:rotation="720" />
+
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/status_text"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/status_text"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/status_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.56"
+            app:layout_constraintStart_toEndOf="@+id/status_view"
+            />
+        <Constraint
+            android:id="@+id/filename_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/title_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBaseline_toBaselineOf="@+id/title_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:transitionEasing="linear" />
+        <Constraint
+            android:id="@+id/filename_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/title_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBaseline_toBaselineOf="@+id/title_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:transitionEasing="standard" />
+
+    </ConstraintSet>
+</MotionScene>
