@@ -9,6 +9,5 @@
         <attr name="baseText" format="string"/>
         <attr name="textSize" format="dimension" />
         <attr name="fontFamily" format="string" />
-<!--        <attr name="progress" format="float"/>-->
     </declare-styleable>
 </resources>

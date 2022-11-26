@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         var notificationManager = getSystemService(NotificationManager::class.java)
 
-        registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
-
         glide_button.setOnCheckedChangeListener { compoundButton, newValue ->
             if (newValue) {
                 url_text.isEnabled = false
@@ -60,10 +58,9 @@ class MainActivity : AppCompatActivity() {
 
         download_button.setOnClickListener {
             download()
-            //download_button.startDownload()
         }
 
-        suggested_group.check(udacity_button.id)
+        //suggested_group.check(udacity_button.id)
 
         notificationManager.createChannel(
             getString(R.string.notification_channel_id),
@@ -127,13 +124,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        //private const val URL ="https://github.com/bumptech/glide/archive/refs/heads/master.zip"
-//            "https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter/archive/master.zip"
-        //private const val CHANNEL_ID = "channelId"
+    override fun onStart() {
+        super.onStart()
+        registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(receiver)
     }
 }
