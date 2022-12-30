@@ -22,45 +22,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        var notificationManager = getSystemService(NotificationManager::class.java)
-
-        glide_button.setOnCheckedChangeListener { compoundButton, newValue ->
-            if (newValue) {
-                url_text.isEnabled = false
-                title = getString(R.string.button_glide)
-                url_text.setText(getString(R.string.glide_url))
-            }
-        }
-
-        udacity_button.setOnCheckedChangeListener { compoundButton, newValue ->
-            if (newValue) {
-                url_text.isEnabled = false
-                title = getString(R.string.button_udaciy)
-                url_text.setText(getString(R.string.udacity_url))
-            }
-        }
-
-        retrofit_button.setOnCheckedChangeListener { compoundButton, newValue ->
-            if (newValue) {
-                url_text.isEnabled = false
-                title = getString(R.string.retrofit_button)
-                url_text.setText(getString(R.string.retrofit_url))
-            }
-        }
-
-        other_button.setOnCheckedChangeListener { compoundButton, newValue ->
-            if (newValue) {
-                url_text.isEnabled = true
-                title = ""
-                url_text.setText("")
-            }
-        }
+        val notificationManager = getSystemService(NotificationManager::class.java)
 
         download_button.setOnClickListener {
             download()
         }
-
-        //suggested_group.check(udacity_button.id)
 
         notificationManager.createChannel(
             getString(R.string.notification_channel_id),
@@ -91,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
             val fileItem = FileItem(title, status)
 
-            var notificationManager = getSystemService(NotificationManager::class.java)
+            val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager.sendNotification(
                 getString(R.string.app_name),
                 getString(R.string.notification_description),
@@ -112,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                     .setAllowedOverMetered(true)
                     .setAllowedOverRoaming(true)
 
-            var downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
+            val downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
             downloadManager.enqueue(request)// enqueue puts the download request in the queue.
 
         } catch (Exc:IllegalArgumentException) {
